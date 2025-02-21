@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Algorun
 
-## Getting Started
+Algorun is a powerful online IDE built with **Next.js 15**, **Convex**, **Clerk**, and **TypeScript**, offering a seamless multi-language coding experience. It provides smart output handling, customizable themes, and community-driven code-sharing, making it the perfect choice for developers looking for flexibility and efficiency.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 💻 **Online IDE** supporting **10 programming languages**
+- 🎨 **Customizable UI** with **5 VSCode themes**
+- ✨ **Smart Output Handling** (Success & Error states)
+- 🔍 **Advanced Filtering & Search**
+- 👤 **Personal Profile** with **Execution History Tracking**
+- 📊 **Comprehensive Statistics Dashboard**
+- 💎 **Flexible Pricing**: Free & Pro plans
+- 🤝 **Community-Driven Code Sharing System**
+- ⚙️ **Customizable Font Size Controls**
+- 🔗 **Webhook Integration Support**
+- 🌟 **Professional Deployment Walkthrough**
+
+## 🏗️ Tech Stack
+
+- **Frontend:** Next.js 15, TypeScript
+- **Backend:** Convex
+- **Authentication:** Clerk
+- **Database & State Management:** Convex
+- **Hosting:** Vercel
+
+## 🌐 Live Demo
+
+[Algorun Live]()
+
+## 📦 Installation
+
+To set up **Algorun** locally, follow these steps:
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/Nainee99/algorun.git
+cd algorun
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+yarn install
+# or
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3️⃣ Setup Environment Variables
 
-## Learn More
+Create a `.env.local` file and add the following environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+CONVEX_DEPLOYMENT=your_convex_deployment
+NEXT_PUBLIC_CONVEX_URL=your_convex_url
+CLERK_WEBHOOK_SECRET=your_clerk_webhook_secret
+LEMON_SQUEEZY_WEBHOOK_SECRET=your_lemon_squeezy_webhook_secret
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4️⃣ Run the Development Server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+yarn dev
+# or
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel Deployment
+
+1. Push your changes to GitHub.
+2. Connect the repository to **Vercel**.
+3. Add environment variables in the Vercel dashboard.
+4. Deploy the project with a single click.
+
+## 📜 License
+
+This project is **open-source** and available under the **MIT License**.
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository
+2. Create a new branch (`feature/your-feature`)
+3. Commit your changes
+4. Push to your branch and submit a Pull Request
+
+## 📬 Contact
+
+- **Email:** hasnainoffice2024@gmail.com
+- **GitHub:** [Nainee99](https://github.com/Nainee99)
