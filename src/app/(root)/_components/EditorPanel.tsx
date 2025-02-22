@@ -10,6 +10,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Editor } from "@monaco-editor/react";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
+import ShareSnippetDialog from "./ShareSnippetDialog";
 
 export default function EditorPanel() {
   const clerk = useClerk();
@@ -156,6 +157,9 @@ export default function EditorPanel() {
           {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
       </div>
+      {isShareDialogOpen && (
+        <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />
+      )}
     </div>
   );
 }
