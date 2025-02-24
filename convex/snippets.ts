@@ -169,3 +169,80 @@ export const starSnippet = mutation({
     }
   },
 });
+
+export const getSnippetById = query({
+  args: { snippetId: v.id("snippets") },
+  handler: async (ctx, args) => {
+    // Get the snippet by ID
+    const snippet = await ctx.db.get(args.snippetId);
+    // If the snippet is not found, throw an error
+    if (!snippet) throw new Error("Snippet not found");
+
+    // Return the snippet
+    return snippet;
+  },
+});
+
+export const getComments = query({
+  args: { snippetId: v.id("snippets") },
+  handler: async (ctx, args) => {
+    // Get all the comments for the snippet
+    const comments = await ctx.db
+      // Query the "snippetComments" table
+      .query("snippetComments")
+      // Use the "by_snippet_id" index
+      .withIndex("by_snippet_id")
+      // Filter the comments by the snippet ID
+      .filter((q) => q.eq(q.field("snippetId"), args.snippetId))
+      // Order the comments in descending order
+      .order("desc")
+      // Collect the comments
+      .collect();
+
+    return comments;
+  },
+});
+
+export const addComment = mutation({
+  args: {
+    snippetId: v.id("snippets"),
+    content: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .first();
+
+    if (!user) throw new Error("User not found");
+
+    return await ctx.db.insert("snippetComments", {
+      snippetId: args.snippetId,
+      userId: identity.subject,
+      userName: user.name,
+      content: args.content,
+    });
+  },
+});
+
+export const deleteComment = mutation({
+  args: { commentId: v.id("snippetComments") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const comment = await ctx.db.get(args.commentId);
+    if (!comment) throw new Error("Comment not found");
+
+    // Check if the user is the comment author
+    if (comment.userId !== identity.subject) {
+      throw new Error("Not authorized to delete this comment");
+    }
+
+    await ctx.db.delete(args.commentId);
+  },
+});
