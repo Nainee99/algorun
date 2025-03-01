@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AlogRun",
   description: "Share and run code snippets",
+  icons: "/favicon.ico",
 };
 
 export default function RootLayout({
